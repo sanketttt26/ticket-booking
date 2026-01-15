@@ -1,5 +1,5 @@
 package com.sanketttt26.tickets.domain;
 
-public enum QrCodeStatuseNum {
+public enum QrCodeStatusEnum {
     ACTIVE,EXPIRED
 }
