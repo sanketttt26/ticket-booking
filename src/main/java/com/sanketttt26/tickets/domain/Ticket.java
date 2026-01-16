@@ -5,42 +5,37 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ticket_types")
+@Table(name = "ticket")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TicketType {
-
+public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "price", nullable = false)
-    private BigDecimal price;
-
-    @Column(name = "total_available")
-    private Integer totalAvailable;
+    @Column(name="status",nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TicketStatusEnum status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name="event_id")
-    private Event event;
+    @JoinColumn(name = "ticket_type_id", nullable = false)
+    private TicketType type;
 
-    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
-    private List<Ticket> tickets = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "buyer_id")
+    private User buyer;
 
+    //TODO Ticket Validation Info can be added later
+
+    //TODO QR Code or Barcode field can be added later
     @CreatedDate
     @Column(name="created_at",nullable = false,updatable = false)
     private LocalDateTime createdAt;
