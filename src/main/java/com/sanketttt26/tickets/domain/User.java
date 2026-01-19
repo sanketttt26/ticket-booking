@@ -17,7 +17,6 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class User {
     @Id
     @Column(name="id",nullable = false,updatable = false)
@@ -67,4 +66,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(id, name, email, createdAt, updatedAt);
     }
+
+
 }
