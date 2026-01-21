@@ -1,6 +1,6 @@
 package com.sanketttt26.tickets.filters;
 
-import com.sanketttt26.tickets.domain.User;
+import com.sanketttt26.tickets.domain.entities.User;
 import com.sanketttt26.tickets.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

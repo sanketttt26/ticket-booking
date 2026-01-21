@@ -1,4 +1,4 @@
-package com.sanketttt26.tickets.domain;
+package com.sanketttt26.tickets.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
